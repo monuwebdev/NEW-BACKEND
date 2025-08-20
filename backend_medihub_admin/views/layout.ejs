@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — Suman Medihub</title>
+  <link rel="stylesheet" href="/public/admin.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Admin Panel — Suman Medihub</h1>
+    <% if (user) { %>
+    <div class="user">
+      <span>👤 <%= user.username %></span>
+      <a class="btn" href="/admin/logout">Logout</a>
+    </div>
+    <% } %>
+  </header>
+  <main class="container">
+    <%- body %>
+  </main>
+</body>
+</html>
