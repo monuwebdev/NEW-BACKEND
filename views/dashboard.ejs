@@ -1,0 +1,32 @@
+<%- include('layout', { body: null, user }) %>
+<section class="card">
+  <h2>Doctors</h2>
+  <form method="post" action="/admin/doctors" class="form row">
+    <input name="name" placeholder="Name" required>
+    <input name="dept" placeholder="Department" required>
+    <input name="exp" placeholder="Experience (e.g., 10+ yrs)">
+    <button class="btn" type="submit">Add</button>
+  </form>
+  <table class="table">
+    <thead><tr><th>Name</th><th>Department</th><th>Experience</th><th>Actions</th></tr></thead>
+    <tbody>
+      <% doctors.forEach(d => { %>
+        <tr>
+          <td>
+            <form method="post" action="/admin/doctors/<%= d._id %>" class="inline">
+              <input name="name" value="<%= d.name %>">
+          </td>
+          <td><input name="dept" value="<%= d.dept %>"></td>
+          <td><input name="exp" value="<%= d.exp %>"></td>
+          <td>
+              <button class="btn small" type="submit">Save</button>
+            </form>
+            <form method="post" action="/admin/doctors/<%= d._id %>/delete" class="inline">
+              <button class="btn small danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
